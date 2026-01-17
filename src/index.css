@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Core palette - warm editorial feel */
+    --background: 40 20% 98%;
+    --foreground: 30 10% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 30 10% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 10% 12%;
+
+    /* Primary - deep ink blue */
+    --primary: 220 60% 20%;
+    --primary-foreground: 40 20% 98%;
+
+    /* Secondary - warm grey */
+    --secondary: 30 10% 94%;
+    --secondary-foreground: 30 10% 25%;
+
+    --muted: 30 10% 92%;
+    --muted-foreground: 30 8% 46%;
+
+    --accent: 30 50% 95%;
+    --accent-foreground: 30 50% 25%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 15% 88%;
+    --input: 30 15% 88%;
+    --ring: 220 60% 20%;
+
+    --radius: 0.75rem;
+
+    /* Sentiment colors */
+    --sentiment-positive: 142 70% 45%;
+    --sentiment-positive-bg: 142 70% 95%;
+    --sentiment-positive-foreground: 142 70% 20%;
+    
+    --sentiment-neutral: 45 80% 50%;
+    --sentiment-neutral-bg: 45 80% 95%;
+    --sentiment-neutral-foreground: 45 80% 20%;
+    
+    --sentiment-negative: 0 72% 51%;
+    --sentiment-negative-bg: 0 72% 95%;
+    --sentiment-negative-foreground: 0 72% 25%;
+
+    /* Custom tokens */
+    --header-height: 4rem;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 20% 8%;
+    --foreground: 40 15% 95%;
+
+    --card: 220 20% 12%;
+    --card-foreground: 40 15% 95%;
+
+    --popover: 220 20% 12%;
+    --popover-foreground: 40 15% 95%;
+
+    --primary: 40 80% 65%;
+    --primary-foreground: 220 20% 8%;
+
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 40 15% 90%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 220 15% 22%;
+    --accent-foreground: 40 15% 90%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 22%;
+    --input: 220 15% 22%;
+    --ring: 40 80% 65%;
+
+    --sentiment-positive: 142 60% 50%;
+    --sentiment-positive-bg: 142 60% 15%;
+    --sentiment-positive-foreground: 142 60% 80%;
+    
+    --sentiment-neutral: 45 70% 55%;
+    --sentiment-neutral-bg: 45 70% 15%;
+    --sentiment-neutral-foreground: 45 70% 85%;
+    
+    --sentiment-negative: 0 65% 55%;
+    --sentiment-negative-bg: 0 65% 15%;
+    --sentiment-negative-foreground: 0 65% 85%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Newsreader', Georgia, serif;
+  }
+}
+
+@layer utilities {
+  .font-headline {
+    font-family: 'Newsreader', Georgia, serif;
+  }
+
+  .font-body {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out forwards;
+  }
+
+  .animate-pulse-soft {
+    animation: pulseSoft 2s ease-in-out infinite;
+  }
+
+  .card-hover {
+    transition: var(--transition-smooth);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px -12px hsl(var(--foreground) / 0.15);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseSoft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Skeleton loader animation */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 25%,
+    hsl(var(--muted-foreground) / 0.1) 50%,
+    hsl(var(--muted)) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
