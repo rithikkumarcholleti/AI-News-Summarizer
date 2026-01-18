@@ -1,6 +1,5 @@
-import { isLocalMode } from './localMode';
-import { fetchNewsLocal } from './newsApi.local';
+import { fetchNewsLocal } from "./newsApi.local";
 
-export async function fetchNews(category = 'general', query) {
+export async function fetchNews(category = "general", query) {
   return fetchNewsLocal(category, query);
 }
